@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
 import { getArticleByID } from "../../API.js";
+import Comments from "../components/comments.jsx";
 
 function Article() {
   const { articleID } = useParams();
@@ -42,6 +43,7 @@ function Article() {
           </p>
         </li>
       </ul>
+      <Comments articleID={articleID} />
     </>
   );
 }

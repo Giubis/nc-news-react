@@ -157,6 +157,30 @@ h2 {
   color: #111;
 }
 
+.comment-card {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto;
+  max-width: 700px;
+}
+
+.comment-card li {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.comment-card h3 {
+  text-align: center;
+  font-size: 1rem;
+  margin: 30px auto 30px auto;
+}
+
 .topic-card {
   list-style: none;
   padding: 0;
@@ -181,4 +205,103 @@ h2 {
 .topic-card li:hover {
   transform: translateY(-4px);
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.user-form {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.user-form form {
+  background-color: #fff;
+  padding: 1.5rem 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+  max-width: 500px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.user-form .input-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 0.75rem;
+}
+
+.user-form label {
+  color: #222;
+  white-space: nowrap;
+}
+
+.user-form input[type="text"] {
+  flex-grow: 1;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.2s ease;
+}
+
+.user-form input[type="text"]:focus {
+  outline: none;
+  border-color: #0077cc;
+  box-shadow: 0 0 0 2px rgba(0, 119, 204, 0.2);
+}
+
+.user-form button {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 120px;
+  align-self: center;
+  transition: background-color 0.2s ease;
+}
+
+.user-form button:hover {
+  background-color: #005fa3;
+}
+
+.user-card {
+  max-width: 500px;
+  margin: 2rem auto;
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  text-align: center;
+}
+
+.user-card img {
+  width: 160px;
+  height: 160px;
+  border: solid 1px black;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0px 5px 5px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+}
+
+.user-card p {
+  font-size: 1rem;
+  color: #444;
+  margin: 0.5rem 0;
+}
+
+.user-card strong {
+  color: #111;
 }

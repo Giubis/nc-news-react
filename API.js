@@ -24,6 +24,19 @@ export async function getArticleByID(ID) {
   return article;
 }
 
+export async function getComments(articleID) {
+  const response = await fetch(
+    `https://nc-news-hz0s.onrender.com/api/articles/${articleID}/comments`
+  );
+
+  if (!response.ok) {
+    console.error(response.status);
+  }
+
+  const comments = await response.json();
+  return comments;
+}
+
 export async function getTopics() {
   const response = await fetch(`https://nc-news-hz0s.onrender.com/api/topics`);
 
@@ -33,4 +46,15 @@ export async function getTopics() {
 
   const topics = await response.json();
   return topics;
+}
+
+export async function getUsers() {
+  const response = await fetch(`https://nc-news-hz0s.onrender.com/api/users`);
+
+  if (!response.ok) {
+    console.error(response.status);
+  }
+
+  const users = await response.json();
+  return users;
 }
