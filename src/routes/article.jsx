@@ -1,22 +1,56 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import { getArticleByID } from "../../API.js";
+import { getArticleByID, patchArticleVotes } from "../../API.js";
 import Comments from "../components/comments.jsx";
 
 function Article() {
-  const { articleID } = useParams();
-
   const [article, setArticle] = useState({});
+  const [votes, setVotes] = useState(0);
+
+  const { articleID } = useParams();
 
   useEffect(() => {
     async function fetchArticle() {
       const { article } = await getArticleByID(articleID);
       setArticle(article);
+      setVotes(article.votes);
     }
 
     fetchArticle();
   }, [articleID]);
+
+  async function upVote() {
+    const currentVotes = votes;
+    const vote = 1;
+    setVotes(votes + vote);
+
+    try {
+      await patchArticleVotes(articleID, vote);
+    } catch (error) {
+      console.error(error);
+      setVotes(currentVotes);
+      alert(
+        "Sorry, we could not update update with your vote. Please try again in a few seconds."
+      );
+    }
+  }
+
+  async function downVote() {
+    const currentVotes = votes;
+    const vote = -1;
+    setVotes(votes + vote);
+
+    try {
+      await patchArticleVotes(articleID, vote);
+    } catch (error) {
+      console.error(error);
+      setVotes(currentVotes);
+      alert(
+        "Sorry, we could not update update with your vote. Please try again in a few seconds."
+      );
+    }
+  }
 
   return (
     <>
@@ -29,7 +63,7 @@ function Article() {
             <strong>Author</strong>: {article.author}
           </p>
           <p>
-            <strong>Votes</strong>: {article.votes}
+            <strong>Votes</strong>: {votes}
           </p>
           <p>
             <strong>Comments</strong>: {article.comment_count}
@@ -41,6 +75,8 @@ function Article() {
           <p>
             <strong>Topic</strong>: {article.topic}
           </p>
+          <button onClick={upVote}>👍🏻</button>
+          <button onClick={downVote}>👎🏻</button>
         </li>
       </ul>
       <Comments articleID={articleID} />

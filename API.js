@@ -11,9 +11,9 @@ export async function getArticles() {
   return articles;
 }
 
-export async function getArticleByID(ID) {
+export async function getArticleByID(articleID) {
   const response = await fetch(
-    `https://nc-news-hz0s.onrender.com/api/articles/${ID}`
+    `https://nc-news-hz0s.onrender.com/api/articles/${articleID}`
   );
 
   if (!response.ok) {
@@ -57,4 +57,22 @@ export async function getUsers() {
 
   const users = await response.json();
   return users;
+}
+
+export async function patchArticleVotes(articleID, vote) {
+  const response = await fetch(
+    `https://nc-news-hz0s.onrender.com/api/articles/${articleID}`,
+    {
+      method: "PATCH",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ inc_votes: vote }),
+    }
+  );
+
+  if (!response.ok) {
+    console.error(response.status);
+  }
+
+  const article = await response.json();
+  return article;
 }

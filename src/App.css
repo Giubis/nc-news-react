@@ -157,6 +157,23 @@ h2 {
   color: #111;
 }
 
+.article-card--single button {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 120px;
+  align-self: center;
+  transition: background-color 0.2s ease;
+}
+
+.article-card--single button:hover {
+  background-color: #005fa3;
+}
+
 .comment-card {
   list-style: none;
   padding: 0;

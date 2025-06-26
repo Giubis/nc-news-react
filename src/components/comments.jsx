@@ -8,7 +8,6 @@ function Comments({ articleID }) {
     async function fetchData() {
       try {
         const { comments } = await getComments(articleID);
-        console.dir(comments);
 
         setComments(comments);
       } catch (error) {

@@ -1,21 +1,19 @@
-import { useState, useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import { getUsers } from "../../API";
 import UserInput from "../components/userInput";
+import { UserContext } from "../contexts/userContext";
 
 function User() {
-  const [user, setUser] = useState(null);
   const [searchParams] = useSearchParams();
   const username = searchParams.get("query");
+  const { user, setUser } = useContext(UserContext);
 
   useEffect(() => {
     async function fetchData() {
       try {
         const { users } = await getUsers();
-        console.dir(users);
-
         const foundUser = users.find((user) => user.username === username);
-        console.log(foundUser);
 
         setUser(foundUser);
       } catch (error) {
@@ -23,7 +21,7 @@ function User() {
       }
     }
     fetchData();
-  }, [username]);
+  }, [username, setUser]);
 
   return (
     <>
