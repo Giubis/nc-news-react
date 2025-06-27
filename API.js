@@ -1,3 +1,5 @@
+import { UserProvider } from "./src/contexts/userContext";
+
 export async function getArticles() {
   const response = await fetch(
     `https://nc-news-hz0s.onrender.com/api/articles`
@@ -75,4 +77,25 @@ export async function patchArticleVotes(articleID, vote) {
 
   const article = await response.json();
   return article;
+}
+
+export async function postCommentOnArticle(articleID, user, message) {
+  const response = await fetch(
+    `https://nc-news-hz0s.onrender.com/api/articles/${articleID}/comments`,
+    {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        username: user,
+        body: message,
+      }),
+    }
+  );
+
+  if (!response.ok) {
+    console.error(response.status);
+  }
+
+  const comment = await response.json();
+  return comment;
 }

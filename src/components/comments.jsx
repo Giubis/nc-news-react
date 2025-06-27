@@ -1,9 +1,7 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { getComments } from "../../API";
 
-function Comments({ articleID }) {
-  const [comments, setComments] = useState([]);
-
+function Comments({ articleID, comments, setComments }) {
   useEffect(() => {
     async function fetchData() {
       try {
@@ -15,7 +13,7 @@ function Comments({ articleID }) {
       }
     }
     fetchData();
-  }, [articleID]);
+  }, [articleID, setComments]);
 
   return (
     <section className="comment-card">

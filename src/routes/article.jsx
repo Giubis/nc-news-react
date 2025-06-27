@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-
 import { getArticleByID, patchArticleVotes } from "../../API.js";
 import Comments from "../components/comments.jsx";
+import CommentInput from "../components/commentInput.jsx";
 
 function Article() {
   const [article, setArticle] = useState({});
   const [votes, setVotes] = useState(0);
-
+  const [comments, setComments] = useState([]);
   const { articleID } = useParams();
 
   useEffect(() => {
@@ -79,7 +79,12 @@ function Article() {
           <button onClick={downVote}>👎🏻</button>
         </li>
       </ul>
-      <Comments articleID={articleID} />
+      <CommentInput articleID={articleID} setComments={setComments} />
+      <Comments
+        articleID={articleID}
+        comments={comments}
+        setComments={setComments}
+      />
     </>
   );
 }
