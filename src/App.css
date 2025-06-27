@@ -259,6 +259,23 @@ h2 {
   margin: 30px auto 30px auto;
 }
 
+.comment-card button {
+  padding: 0.6rem 1.5rem;
+  font-size: 1rem;
+  background-color: #0077cc;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  min-width: 120px;
+  align-self: center;
+  transition: background-color 0.2s ease;
+}
+
+.comment-card button:hover {
+  background-color: #005fa3;
+}
+
 .topic-card {
   list-style: none;
   padding: 0;

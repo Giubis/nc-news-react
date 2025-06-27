@@ -36,7 +36,7 @@ function CommentInput({ articleID, setComments }) {
           newComment
         );
 
-        setComments((existingComments) => [comment, ...existingComments]);
+        setComments((previousComments) => [comment, ...previousComments]);
 
         setNewComment("");
 

@@ -99,3 +99,19 @@ export async function postCommentOnArticle(articleID, user, message) {
   const comment = await response.json();
   return comment;
 }
+
+export async function deleteCommentOnArticle(commentID) {
+  const response = await fetch(
+    `https://nc-news-hz0s.onrender.com/api/comments/${commentID}`,
+    {
+      method: "DELETE",
+      headers: { "Content-Type": "application/json" },
+    }
+  );
+
+  if (!response.ok) {
+    console.error(response.status);
+  }
+
+  return;
+}
